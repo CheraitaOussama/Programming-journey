@@ -1,0 +1,19 @@
+#include<iostream>
+#include <string>
+using namespace std;
+// Function: ReadName
+string ReadName() {
+	string Name;
+	cout << "\nPlease enter your name?  ";
+	getline(cin, Name);
+	return Name;
+}
+// Function: PrintName
+void PrintName(string Name) {
+	cout << "\n Your Name is: "<< Name << endl;
+}
+// Main function: Program entry point.
+int main() {
+	PrintName(ReadName());
+	return 0;
+}
