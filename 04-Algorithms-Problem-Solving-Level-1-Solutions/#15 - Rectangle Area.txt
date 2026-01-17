@@ -4,7 +4,7 @@ using namespace std;
 void ReadNumber(float &A,float &B) {
 	cout << "\nPlease Enter Rectangle Width A ?\n";
 	cin >> A;
-	cout << "\nPlease Rectangle Length B ?\n";
+	cout << "\nPlease Enter Rectangle Length B ?\n";
 	cin >> B;
 }
 float CalculateRectangleArea(float A,float B) {
