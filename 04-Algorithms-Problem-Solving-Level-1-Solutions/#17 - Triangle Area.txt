@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+void ReadNumber(float &A, float& H) {
+	cout << "\nPlease Enter a Rectangle Base\n";
+	cin >> A;
+	cout << "\nPlease Enter a Rectangle height\n";
+	cin >> H;
+}
+float CalculateTriangleArea(float A,float H) {
+	float Area = (A/2) * H;
+	return Area;
+}
+void PrintResult(float Area) {
+	cout << "\nTriangle Area = " << Area<<endl;
+}
+int main() {
+
+	float A ,H;
+	ReadNumber(A,H);
+	PrintResult(CalculateTriangleArea(A, H));
+	return 0;
+}
