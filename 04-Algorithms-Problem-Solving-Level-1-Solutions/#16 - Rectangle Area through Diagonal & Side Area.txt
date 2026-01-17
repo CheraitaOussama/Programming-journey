@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+void ReadNumber(float &A,float &D) {
+	cout << "\nPlease Enter Rectangle Side A ?\n";
+	cin >> A;
+	cout << "\nPlease Enter Rectangle Diagonal D ?\n";
+	cin >> D;
+}
+float RectangleAreaBySideAndDiagonal(float A,float D) {
+	float Area = A * sqrt(pow(D,2)- pow(A, 2));
+	return Area;
+}
+void PrintResult(float A, float D) {
+	cout << "\nRectangle Area = : "<< RectangleAreaBySideAndDiagonal(A,D)<<endl;
+}
+int main() {
+	float A, D;
+	ReadNumber(A,D);
+	PrintResult(A, D);
+	return 0;
+}
