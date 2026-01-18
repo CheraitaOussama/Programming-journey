@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+enum enOddorEven
+{
+	Odd=1,Even=2
+};
+int ReadNumber() {
+	int Number;
+	cout << "\nPlease enter a number\n";
+	cin >> Number;
+	return Number;
+}
+enOddorEven CheckOddorEven(int Number) {
+	if (Number % 2 != 0)
+		return enOddorEven::Odd;
+	else
+		return enOddorEven::Even;
+}
+int  SumOddNumbersFrom1ToN(int Number) {
+	int Sum = 0;
+	for (short i = 1; i <= Number; i++)
+	{
+		if (CheckOddorEven(i)== enOddorEven::Odd)
+			Sum += i;
+	}
+	return Sum;
+}
+
+int main() {
+	int N = ReadNumber();
+	cout<<SumOddNumbersFrom1ToN(N);
+	return 0;
+}
