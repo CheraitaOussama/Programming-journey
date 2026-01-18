@@ -1,0 +1,25 @@
+	#include<iostream>
+	using namespace std;
+
+
+	void  ReadTriangleData(float &A,float &B) {
+		cout << "\nPlease Enter triangle side A ?\n";
+		cin >> A;
+		cout << "\nPlease Enter triangle base B ?\n";
+		cin >> B;
+	}
+	float CirlceAreaByInscribedTringle(float A, float B) {
+		const float Pi = 3.14159265359;
+    // Area = π * (B² / 4) * ((2A - B) / (2A + B))
+		float Area = Pi*(pow(B,2)/4)*((2 * A - B) / (2 * A + B));
+		return Area;
+	}
+	void PrintResult(float Area) {
+		cout << "\nCircle Area = "<< Area <<endl;
+	}
+	int main() {
+		float A, B;
+		ReadTriangleData(A,B);
+		PrintResult(CirlceAreaByInscribedTringle(A,B));
+		return 0;
+	}
