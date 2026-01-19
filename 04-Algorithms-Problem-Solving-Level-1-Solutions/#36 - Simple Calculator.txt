@@ -1,0 +1,40 @@
+
+#include<iostream>
+using namespace std;
+enum enOpType
+{
+	Add='+',Subtract='-',Multiply='*',Divide='/'
+};
+float ReadNumber(string Message) {
+	float Number;
+	cout <<endl<< Message<<endl;
+	cin >> Number;
+	return Number;
+}
+enOpType ReadOpType() {
+	char opType;
+	cout << "\nPlease enter operation type ( + , - , * ,/ ) ?\n";
+	cin >> opType;
+	return (enOpType)opType;
+}
+float Calculate(float N1, float N2, enOpType opType) {
+	switch (opType) {
+	case enOpType::Add:
+		return N1 + N2;
+	case enOpType::Divide:
+		return N1 / N2;
+	case enOpType::Multiply:
+		return N1 * N2;
+	case enOpType::Subtract:
+		return N1 - N2;
+	default:
+		return N1 + N2;
+	}
+}
+int main() {
+	float N1 = ReadNumber("Please enter the first number");
+	float N2 = ReadNumber("Please enter the second number");
+	enOpType opType =ReadOpType();
+	cout << endl << "Result = " << Calculate(N1,N2, opType)<<endl;
+	return 0;
+}
