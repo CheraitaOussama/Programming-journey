@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+
+enum enEvenOdd
+{
+	Even=1,Odd=2
+};
+int ReadNumber() {
+	int Number;
+	cout << "\nPlease enter a number?\n";
+	cin >> Number;
+	return Number;
+}
+enEvenOdd CheckEvenOrOdd(int Number) {
+	if (Number % 2 == 0)
+		return enEvenOdd::Even;
+	else
+		return enEvenOdd::Odd;
+}
+int SumEvenNumbersFrom1ToN_UsingFor(int Number) {
+	int Sum = 0;
+	cout << "\nSum even numbers using For Statement:\n";
+	for (short Counter = 1; Counter <= Number; Counter++)
+	{
+		if (CheckEvenOrOdd(Counter)== enEvenOdd::Even)
+			Sum += Counter;
+
+	}
+	return Sum;
+}
+int SumEvenNumbersFrom1ToN_UsingDoWhile(int Number) {
+	int Sum = 0;
+	int Counter = 0;
+	cout << "\nSum even numbers usig Do..While Statement:\n";
+	do
+	{
+		Counter++;
+		if (CheckEvenOrOdd(Counter)== enEvenOdd::Even) {
+			Sum += Counter;
+
+		}
+
+	} while (Counter<= Number);
+	return Sum;
+}
+int SumEvenNumbersFrom1ToN_UsingWhile(int Number) {
+	int Counter = 0;
+	int Sum = 0;
+	cout << "\nSum even numbers using while statement:\n";
+	while (Counter <= Number) {
+		Counter++;
+		if (CheckEvenOrOdd(Counter) == enEvenOdd::Even)
+			Sum += Counter;
+	}
+	return Sum;
+}
+
+int main() {
+	int N = ReadNumber();
+	cout<< SumEvenNumbersFrom1ToN_UsingFor(N);
+	cout<<SumEvenNumbersFrom1ToN_UsingDoWhile(N);
+	cout<< SumEvenNumbersFrom1ToN_UsingWhile(N);
+
+	return 0;
+}
