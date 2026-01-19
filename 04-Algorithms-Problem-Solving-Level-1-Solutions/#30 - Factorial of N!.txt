@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+bool IsPositiveNumber(int Number) {
+	return (Number > 0);
+}
+int ReadPositiveNumber() {
+	int Number;
+	do
+	{
+		cout << "\nPlease Enter a Positive Number? \n";
+		cin >> Number;
+	} while (!IsPositiveNumber(Number));
+	return Number;
+}
+int Factorial(int Number) {
+	int F = 1;
+	for (short Counter = Number; Counter >= 1; Counter--)
+	{
+		F = F * Counter;
+	}
+	return F;
+}
+
+int main() {
+	int Number=ReadPositiveNumber();
+	cout << Factorial(Number);
+	return 0;
+}
