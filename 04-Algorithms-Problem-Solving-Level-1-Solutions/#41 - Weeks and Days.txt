@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+float ReadPositiveNumber(string Message) {
+	float Number = 0;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number<0);
+
+	return Number;
+}
+
+float HoursToDays(float Hours) {
+	return Hours/24;
+}
+
+float DaysToWeeks(float Days) {
+	return Days /7;
+}
+
+int main() {
+
+	float NumberOfHours = ReadPositiveNumber("Please Enter Number Of Hours?");
+	float NumbersOfDays = HoursToDays(NumberOfHours);
+	float NumbersOfWeeks = DaysToWeeks(NumbersOfDays);
+
+	cout << "Total Hours = " << NumberOfHours << endl;
+	cout << "Total Days  = " << NumbersOfDays << endl;
+	cout << "Total Weeks = " << NumbersOfWeeks << endl;
+
+	return 0;
+}
