@@ -4,18 +4,18 @@ enum enPrimeNotPrime
 {
 	Prime=1, NotPrime=2
 };
-int ReadPositiveNumber() {
-	int Number = 0;
+float ReadPositiveNumber(string Message) {
+	float Number = 0;
 	do
 	{
-		cout << "\nEnter a Positive Number\n";
+		cout << endl << Message << endl;
 		cin >> Number;
 	} while (Number<=0);
 	return Number;
 }
 enPrimeNotPrime IsPrimeNumber(int Number) {
-	if (Number <= 2)
-		return enPrimeNotPrime::Prime;
+	if (Number < 2)
+		return enPrimeNotPrime::NotPrime;
 	else
 	{
 		int M =round( Number / 2);
@@ -28,13 +28,19 @@ enPrimeNotPrime IsPrimeNumber(int Number) {
 		return enPrimeNotPrime::Prime;
 	}
 }
-void PrintResult(int Number) {
-	if (IsPrimeNumber(Number) == enPrimeNotPrime::Prime)
-		cout << "\nPrime\n";
-	else
-		cout << "\nNotPrime\n";
+void PrintNumberType(int Number) {
+	switch (IsPrimeNumber(Number)) {
+	case enPrimeNotPrime::Prime:
+		cout << "\nThe number is Prime\n";
+		break;
+	case enPrimeNotPrime::NotPrime:
+		cout << "\nThe number is not prime\n";
+		break;
+
+    }
 }
 int main() {
-	PrintResult(ReadPositiveNumber());
+	PrintNumberType(ReadPositiveNumber("Please enter a positive number?"));
+
 	return 0;
 }
