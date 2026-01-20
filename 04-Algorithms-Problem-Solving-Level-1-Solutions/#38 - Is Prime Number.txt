@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+enum enPrimeNotPrime
+{
+	Prime=1, NotPrime=2
+};
+int ReadPositiveNumber() {
+	int Number = 0;
+	do
+	{
+		cout << "\nEnter a Positive Number\n";
+		cin >> Number;
+	} while (Number<=0);
+	return Number;
+}
+enPrimeNotPrime IsPrimeNumber(int Number) {
+	if (Number <= 2)
+		return enPrimeNotPrime::Prime;
+	else
+	{
+		int M =round( Number / 2);
+		for (short Counter = 2; Counter <= M; Counter++)
+		{
+			if (Number% Counter==0) {
+				return enPrimeNotPrime::NotPrime;
+			}
+		}
+		return enPrimeNotPrime::Prime;
+	}
+}
+void PrintResult(int Number) {
+	if (IsPrimeNumber(Number) == enPrimeNotPrime::Prime)
+		cout << "\nPrime\n";
+	else
+		cout << "\nNotPrime\n";
+}
+int main() {
+	PrintResult(ReadPositiveNumber());
+	return 0;
+}
