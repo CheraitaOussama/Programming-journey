@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+float ReadNumber(string Message) {
+	float Number = 0;
+	cout << Message <<endl;
+	cin >> Number;
+	return Number;
+}
+float CalculateRemainder(float TotalBill,float Cashpaid){
+		return Cashpaid - TotalBill;
+}
+
+int main() {
+	float TotalBill = ReadNumber("Please Enter Total Bill? ");
+	float Cashpaid = ReadNumber("Please Enter Total Cash Paid? ");
+	cout << "Total Bill = "<< TotalBill <<endl;
+	cout << "Total Cash Paid = "<< Cashpaid <<endl;
+	cout << "***********************\n";
+	cout << "Remainder = " << CalculateRemainder(TotalBill, Cashpaid) << endl;
+	return 0;
+}
