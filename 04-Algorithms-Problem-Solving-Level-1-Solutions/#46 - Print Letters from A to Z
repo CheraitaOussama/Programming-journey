@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+
+void PrintLetterFromAToZ() {
+	for (size_t i = 65; i <= 90; i++)
+	{
+		cout<<char(i)<<endl;
+	}
+}
+int main() {
+	PrintLetterFromAToZ();
+	return 0;
+}
