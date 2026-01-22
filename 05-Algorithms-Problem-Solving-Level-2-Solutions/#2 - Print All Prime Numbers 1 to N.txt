@@ -17,7 +17,7 @@ enPrimeNotPrime CheckPrime(int Number) {
 		return enPrimeNotPrime::NotPrime;
 	else
 	{
-		int M = ceil(Number/2);
+	    int M = round(Number / 2);
 		for (int Counter = 2; Counter <= M; Counter++)
 		{
 			if (Number% Counter==0)
