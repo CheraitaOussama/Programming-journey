@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+
+int ReadPositiveNumber(string Message) {
+	int Number = 0;
+	do{
+	 cout << Message << endl;
+	 cin >> Number;
+	} while (Number<=0);
+	return Number;
+}
+	
+int CountDigitFrequency(int Number, short DigitToCheck) {
+	int FreqCount = 0, Remainder=0;
+	while (Number>0) {
+		Remainder= Number % 10;
+		Number = Number / 10;
+
+		if (DigitToCheck == Remainder)
+			FreqCount++;
+	}
+	return FreqCount;
+}
+void PrintAllDigitsFrequency(int Number) {
+	for (short i = 0; i <= 9; i++){
+		int CountFreq = CountDigitFrequency(Number, i);
+		if (CountFreq>0)
+		{
+			cout << "\nDigit " << i << " Frequency is " << CountFreq << " Time(s).";
+		}
+	}
+}
+int main() {
+
+	int Number = ReadPositiveNumber("Please Enter the main number? ");
+	PrintAllDigitsFrequency(Number);
+
+	return 0;
+}
