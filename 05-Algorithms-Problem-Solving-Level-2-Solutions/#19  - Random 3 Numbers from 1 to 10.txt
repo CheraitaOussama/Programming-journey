@@ -4,7 +4,6 @@ using namespace std;
 
 int RandomNumber(int From, int To)
 {
-	int RandNum = rand() % (To - From + 1) + From;
 	return RandNum;
 }
 
