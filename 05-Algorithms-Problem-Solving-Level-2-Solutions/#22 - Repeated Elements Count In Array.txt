@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+int ReadPositiveNumber(string Message) {
+	int Number = 0;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number<=0);
+	return Number;
+}
+void ReadArrayElements(int Array[100],int& ArrayLength) {
+	cout << "\nEnter number of elements:\n";
+	cin >> ArrayLength;
+	cout << "Enter array elements:\n";
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		cout << "Element[" << i << "] : \n";
+		cin >> Array[i];
+	}
+	cout << endl;
+}
+void PrintArrayElements(int Array[100], int ArrayLength) {
+	for (int i = 0; i < ArrayLength; i++)
+		cout << Array[i] << " ";
+
+	cout <<"\n";
+}
+int CheckNumberInArray(int NumberToCheck, int Array[], int ArrayLength) {
+	short Counter = 0;
+	for (short i = 0; i < ArrayLength; i++)
+	{
+		if (Array [i] == NumberToCheck)
+		{
+			Counter++;
+		}
+	}
+	return Counter;
+}
+int main() {
+	int Array[100], ArrayLength;
+	ReadArrayElements(Array,ArrayLength);
+	int NumberToCheck = ReadPositiveNumber("Please enter the number you want to check? ");
+	cout << "\nOriginal array: ";
+	PrintArrayElements(Array, ArrayLength);
+	cout << NumberToCheck << " is repeated " << CheckNumberInArray(NumberToCheck, Array, ArrayLength) << " time(s)\n";
+	return 0;
+}
