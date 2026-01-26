@@ -1,0 +1,44 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+short RandomNumber(short From, short To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillArrayWithRandomNumbers(short Array[100], short&ArrayLength) {
+
+	cout << "\nEnter Number of elements\n";
+	cin >> ArrayLength;
+	for (short  i = 0; i < ArrayLength; i++)
+	{
+		Array[i]= RandomNumber(1,100);
+	}
+}
+void PrintArray(short Array[100], short ArrayLength) {
+
+	for (short i = 0; i < ArrayLength; i++)
+	{
+		cout << Array[i] << " ";
+	}
+	cout << endl;
+}
+short MaxNumberInArray(short Array[100], short ArrayLength) {
+	short Max = 0;
+	for (short  i = 0; i < ArrayLength; i++)
+	{
+		if (Array[i]> Max){
+			Max = Array[i];
+		}
+	}
+	return Max;
+}
+int main() {
+
+	srand((unsigned)time(NULL));
+	short Array[100], ArrayLength = 0;
+	FillArrayWithRandomNumbers(Array, ArrayLength);
+	cout << "\nArray Elements:";
+	PrintArray(Array, ArrayLength);
+	cout << "\nMax Number is : " << MaxNumberInArray(Array, ArrayLength)<<endl;
+
+	return 0;
+}
