@@ -1,10 +1,7 @@
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
-enum enPrimeNotPrime
-{
-	Prime=1, NotPrime=2
-};
+
 int ReadPositiveNumber(string Message) {
 	int Number = 0;
 	do
@@ -14,18 +11,7 @@ int ReadPositiveNumber(string Message) {
 	} while (Number<=0);
 	return Number;	
 }
-enPrimeNotPrime IsPrimeNumber(int Number) {
-	if (Number < 2)
-		return enPrimeNotPrime::NotPrime;
-	int M = round(Number/2);
-	for (int  i = 2; i <= M; i++)
-	{
-		if (Number % i == 0) {
-			return enPrimeNotPrime::NotPrime;
-		}   
-	}
-	return enPrimeNotPrime::Prime;
-}
+
 int RandomNumber(int From,int To) {
 	return rand() % (To - From + 1) + From;
 }
