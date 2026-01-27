@@ -1,0 +1,62 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+enum enPrimeNotPrime
+{
+	Prime=1, NotPrime=2
+};
+enPrimeNotPrime IsPrimeNumber(int Number) {
+	if (Number < 2)
+		return enPrimeNotPrime::NotPrime;
+	int M = round(Number/2);
+	for (int  i = 2; i <= M; i++)
+	{
+		if (Number % i == 0) {
+			return enPrimeNotPrime::NotPrime;
+		}   
+	}
+	return enPrimeNotPrime::Prime;
+}
+int RandomNumber(int From,int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillArrayWithRandomNumbers(int Array[100],int &ArrayLength) {
+	cout << "Enter number of array elements?\n";
+	cin >> ArrayLength;
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		Array[i] = RandomNumber(1,100);
+	}
+}
+void PrintArray(int Array[100], int ArrayLength) {
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		cout << Array[i]<<" ";
+	}
+	cout << endl;
+}
+void CopyOnlyPrimeNumbers(int ArrSource[100],int ArrDestination[100],int ArrSrcLength, int &ArrDesLength) {
+
+	for (int i = 0; i < ArrSrcLength; i++)
+	{
+		if (IsPrimeNumber(ArrSource[i])== enPrimeNotPrime::Prime) {
+			ArrDestination[ArrDesLength] = ArrSource[i];
+			ArrDesLength++;
+		}
+	}
+
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+	int Array1[100], Array2[100], Array1Length = 0, Array2Length = 0;
+	FillArrayWithRandomNumbers(Array1, Array1Length);
+	cout << "\nArray 1 Elements: \n";
+	PrintArray(Array1, Array1Length);
+	CopyOnlyPrimeNumbers(Array1, Array2,Array1Length, Array2Length);
+	cout << "\nPrime Numbers in Array2: \n";
+	PrintArray(Array2, Array2Length);
+
+	return 0;
+}
