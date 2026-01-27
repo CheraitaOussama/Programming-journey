@@ -1,0 +1,67 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+enum enPrimeNotPrime
+{
+	Prime=1, NotPrime=2
+};
+int ReadPositiveNumber(string Message) {
+	int Number = 0;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number<=0);
+	return Number;	
+}
+enPrimeNotPrime IsPrimeNumber(int Number) {
+	if (Number < 2)
+		return enPrimeNotPrime::NotPrime;
+	int M = round(Number/2);
+	for (int  i = 2; i <= M; i++)
+	{
+		if (Number % i == 0) {
+			return enPrimeNotPrime::NotPrime;
+		}   
+	}
+	return enPrimeNotPrime::Prime;
+}
+int RandomNumber(int From,int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillArrayWithRandomNumbers(int Array[100],int &ArrayLength) {
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		Array[i] = RandomNumber(1,100);
+	}
+}
+void PrintArray(int Array[100], int ArrayLength) {
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		cout << Array[i]<<" ";
+	}
+	cout << endl;
+}
+void Sum2Arrays(int Array1[100], int Array2[100],int  ArraySum[100],int  ArrayLength) {
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		ArraySum[i]=Array1[i] + Array2[i];
+	}
+}
+int main() {
+
+	srand((unsigned)time(NULL));
+	int Array1[100], Array2[100], ArraySum[100] , ArrLength =0;
+	ArrLength =ReadPositiveNumber("How Many elements?");
+	FillArrayWithRandomNumbers(Array1, ArrLength);
+	cout << "\nArray 1 Elements: \n";
+	PrintArray(Array1, ArrLength);
+	FillArrayWithRandomNumbers(Array2, ArrLength);
+	cout << "\nArray 2 Elements: \n";
+	PrintArray(Array2, ArrLength);
+	Sum2Arrays(Array1, Array2, ArraySum, ArrLength);
+	cout << "\nSum of array1 and array2 elements: \n";
+	PrintArray(ArraySum, ArrLength);
+
+	return 0;
+}
