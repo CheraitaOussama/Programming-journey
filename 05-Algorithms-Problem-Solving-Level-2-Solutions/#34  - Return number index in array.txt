@@ -13,7 +13,6 @@ int ReadPositiveNumber(string Message) {
 int RandomNumber(int From,int To) {
 	return rand() % (To - From + 1) + From;
 }
-void FillArrayWithRandomNumbers(int Array[100],int &ArrLength ) {
 	cout << "Enter Number of ELements:\n";
 	cin >> ArrLength;
 	for (int i = 0; i < ArrLength; i++)
