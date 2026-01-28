@@ -1,0 +1,61 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+int ReadPositiveNumber(string Message) {
+	int Number = 0;
+	do
+	{
+		cout << Message<<endl;
+		cin >> Number;
+	} while (Number<=0);
+	return Number;
+}
+int RandomNumber(int From,int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillArrayWithRandomNumbers(int Array[100],int &ArrLength ) {
+	cout << "Enter Number of ELements:\n";
+	cin >> ArrLength;
+	for (int i = 0; i < ArrLength; i++)
+	{
+		Array[i] = RandomNumber(1,100);
+	}
+}
+void PrintArrayElements(int Array[100], int ArrLength) {
+	cout << endl;
+	for (int i = 0; i < ArrLength; i++)
+	{
+		cout << Array[i] << "  ";
+	}
+	cout << endl;
+}
+int FindNumberPostionInArray(int Array[100], int Number,int ArrLength) {
+	for (int i = 0; i < ArrLength; i++)
+	{
+		if (Array[i]== Number) {
+			return i;
+		}
+	}
+	return -1;
+}
+bool IsNumberInArray(int arr[100],int Number, int arrLength)
+{
+	// Use FindNumberPositionInArray and check if the result is not -1.
+	return FindNumberPostionInArray(arr, Number, arrLength) != -1;
+}
+int main() {
+	int Array[100], ArrLength = 0;
+	srand((unsigned)time(NULL));
+	FillArrayWithRandomNumbers(Array,ArrLength);
+	cout << "Array 1 elements:\n";
+	PrintArrayElements(Array, ArrLength);
+	int Number=ReadPositiveNumber("Please enter a number to search for?");
+	cout << "\nNumber you are looking for is " << Number << endl;
+	if (!IsNumberInArray(Array, Number, ArrLength))
+		cout << "No, The number is not found :-(\n";
+	else
+		cout << "Yes it is found :-)\n";
+
+
+		return 0;
+}
