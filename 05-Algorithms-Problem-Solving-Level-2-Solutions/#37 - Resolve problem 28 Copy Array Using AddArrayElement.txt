@@ -38,7 +38,7 @@ int main() {
 	cout << "\nArray 1 elements:\n";
 	PrintArray(Array, ArrayLength);
 	cout << "\nArray 2 elements after copy:\n";
-	PrintArray(Array2Length,Array2Length);
+	PrintArray(Array2,Array2Length);
 
 	return 0;
 }
