@@ -1,0 +1,62 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+enum PrimeNotPrime
+{
+	Prime =1, NotPrime =2
+};
+int RandomNumber(int From,int To) {
+	return rand() % (To - From + 1) + From;
+}
+PrimeNotPrime CheckPrime(int Number) {
+	if (Number < 2)
+		return PrimeNotPrime::NotPrime;
+	int M = round(Number/2);
+	for (int  i = 2; i <= M; i++)
+	{
+		if (Number%2==0)
+		return PrimeNotPrime::NotPrime;
+	}
+	return PrimeNotPrime::Prime;
+}
+void FillArrayWithRandomNumbers(int Array[100],int &ArrayLength) {
+	cout << "\nEnter Number of elements\n";
+	cin >> ArrayLength;
+	for (int  i = 0; i < ArrayLength; i++)
+	{
+		Array[i] = RandomNumber(1,100);
+	}
+}
+void PrintArray(int Array[100], int ArrayLength) {
+	for (int  i = 0; i < ArrayLength; i++)
+	{
+		cout << Array[i] << "   ";
+	}
+	cout << endl;
+}
+void AddArrayElement(int Number,int Array[100], int &ArrayLength) {
+	ArrayLength++;
+	Array[ArrayLength - 1] = Number;
+}
+void CopyPrimeNumbersInNewArray(int SrcArray[100], int DestArray[100], int SrcArrayLength,int& DestArrayLength) {
+	for (int i = 0; i < SrcArrayLength; i++)
+	{
+		if (CheckPrime(SrcArray[i]) == PrimeNotPrime::Prime)
+			AddArrayElement(SrcArray[i], DestArray, DestArrayLength);
+	}
+}
+
+int main() {
+	srand((unsigned)time(NULL));
+
+	int Arr[100],ArrayLength=0;
+	FillArrayWithRandomNumbers(Arr, ArrayLength);
+	cout << "\nArray 1 elements:\n";
+	PrintArray(Arr, ArrayLength);
+	int Arr2[100], ArrayLength2 = 0;
+	CopyPrimeNumbersInNewArray(Arr, Arr2, ArrayLength, ArrayLength2);
+	cout << "\nArray 2 Prime numbers:\n";
+	PrintArray(Arr2, ArrayLength2);
+
+	return 0; 
+}
