@@ -9,14 +9,14 @@ float ReadNumber() {
 }
 int MyFloor(float Number) {
 	if (Number >= 0)
-		return Number;
+		return int(Number);
 	else
-		return --Number;
+		return int(Number)-1;
 }
 int main() {
 	float Number = ReadNumber();
 	cout << "\nMy Floor Result : " << MyFloor(Number) << endl;
-	cout <<"\nC++ Round Result : " << floor(Number)<<endl;
-	
+	cout << "\nC++ Round Result : " << floor(Number) << endl;
+
 	return 0;
 }
