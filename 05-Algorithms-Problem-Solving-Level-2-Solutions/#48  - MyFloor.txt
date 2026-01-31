@@ -16,7 +16,7 @@ int MyFloor(float Number) {
 int main() {
 	float Number = ReadNumber();
 	cout << "\nMy Floor Result : " << MyFloor(Number) << endl;
-	cout << "\nC++ Round Result : " << floor(Number) << endl;
+	cout << "\nC++ Floor Result : " << floor(Number) << endl;
 
 	return 0;
 }
