@@ -1,0 +1,24 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+float ReadNumber() {
+	float Number = 0;
+	cout << "\nPlease enter a Number:\n";
+	cin >> Number;
+	return Number;
+}
+bool IsNegativeNumber(float Number) {
+	return (Number < 0);
+}
+float Myabs(float Number) {
+	if (IsNegativeNumber(Number)) {
+		return Number * -1;
+	}
+	return Number;
+}
+int main() {
+	float Number = ReadNumber();
+	cout << "\nMy abs Result : " << Myabs(Number) << endl;
+	cout <<"\nC++ abs Result : " << abs(Number)<<endl;
+	return 0;
+}
