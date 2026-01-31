@@ -1,0 +1,46 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+bool IsPositiveNumber(int Number) {
+	return (Number >= 0);
+}
+int RandomNumber(int From,int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillArrayWithRandomNumber(int Array[100], int &ArrayLength) {
+	cout << "\nEnter Number of array elements\n";
+	cin >> ArrayLength;
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		Array[i]=RandomNumber(-100, 100);
+	}
+}
+void PrintArray(int Array[100],int ArrayLength) {
+	for (int i = 0; i < ArrayLength; i++)
+	{
+		cout << Array[i] << "    ";
+	}
+	cout << endl;
+}
+int CountPositiveNumbersInArray(int Array[100], int ArrayLength) {
+	int Counter = 0;
+	for (int  i = 0; i < ArrayLength; i++)
+	{
+		if (IsPositiveNumber(Array[i]))
+			Counter++;
+	}
+	return Counter;
+}
+
+int main() {
+	srand((unsigned)time(NULL));
+
+	int Array[100],  ArrayLength=0;
+	FillArrayWithRandomNumber(Array, ArrayLength);
+	cout << "\nArray Elements: ";
+	PrintArray(Array, ArrayLength);
+	cout << "\nPositive Numbers count is : ";
+	cout<< CountPositiveNumbersInArray(Array, ArrayLength)<<endl;
+
+	return 0;
+}
