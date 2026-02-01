@@ -1,71 +1,61 @@
-Algorithms & Problem Solving – Level 2
-(Programming Advices – AbouHadhood Platform)
+# Algorithms & Problem Solving – Level 2
+## Programming Advices – AbouHadhood Platform
 
-🎉 I’m happy to share that I’ve successfully completed Algorithms & Problem Solving – Level 2 on the
-👉 AbouHadhood Platform
+This repository contains solutions to **Algorithms & Problem Solving – Level 2**
+from the **AbouHadhood Platform**:
+https://abouhadhood.com/
 
-This repository contains solutions to algorithmic problems from Level 2, with a strong focus on problem decomposition and the Divide & Conquer approach.
+The focus of this level is on strengthening problem-solving skills using
+**Structured Programming** and the **Divide & Conquer** approach.
 
-🚀 Course Overview
+---
+
+## Course Overview
 
 This level focuses on:
 
-Deepening understanding of algorithms & problem-solving strategies
+- Deepening understanding of algorithms and problem-solving techniques
+- Writing clean and structured C++ code
+- Applying the Divide & Conquer principle in every problem
 
-Strengthening structured programming skills
+Each problem is decomposed into small functions and procedures,
+where each function has a single responsibility.
 
-Applying the Divide & Conquer principle in every solution
+---
 
-Each problem is broken down into small, focused functions and procedures, where every function has a single responsibility, resulting in:
+## Key Highlights
 
-Clean code
+- Implementing mathematical functions from scratch
+  (without using the cmath library):
+  - abs()
+  - round()
+  - floor()
+  - ceil()
+  - sqrt()
 
-Readable logic
+- Practicing:
+  - Function decomposition
+  - Logical thinking
+  - Debugging
+  - Code optimization
 
-Reusable components
+- Completing two hands-on projects that combine all learned concepts
 
-💡 Key Highlights
+---
 
-✅ Implementing core mathematical functions from scratch (without using the cmath library):
+## Technologies Used
 
-abs()
+- Language: C++
+- Programming Paradigm: Structured Programming
+- Tools:
+  - VS Code / Dev-C++
+  - Git
+  - GitHub
 
-round()
+---
 
-floor()
+## Next Steps
 
-ceil()
-
-sqrt()
-
-✅ Strong practice in:
-
-Function decomposition
-
-Logical thinking
-
-Debugging techniques
-
-Code optimization
-
-✅ Two hands-on mini projects that combine all learned concepts
-
-🛠 Technologies Used
-
-Language: C++
-
-Programming Paradigm: Structured Programming
-
-Tools:
-
-VS Code / Dev-C++
-
-Git & GitHub
-
-🔜 Next Steps
-
-After completing Level 2, I moved on to
-👉 Level 3 – Algorithms & Problem Solving,
-which introduces more advanced challenges and complex problem-solving concepts.
-
-⭐ If you find this repository useful, feel free to star it and follow my journey 🚀
+After completing Level 2, I advanced to
+**Level 3 – Algorithms & Problem Solving**,
+which introduces more advanced challenges and concepts.
