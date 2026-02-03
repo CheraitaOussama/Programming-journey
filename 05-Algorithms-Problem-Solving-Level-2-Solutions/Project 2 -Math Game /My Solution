@@ -5,9 +5,7 @@ using namespace std;
 enum enQuestionsLevel {
 	EasyLevel =1,MedLevel =2,HardLevel =3,MixLevel =4
 };
-enum enOperationType {
-	Addition=1, Subtraction =2, Multiplication =3, Division =4,Mix=5
-};
+
 struct strQuizQuestion
 {
 	float Number1 = 0;
