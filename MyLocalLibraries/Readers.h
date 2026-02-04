@@ -13,17 +13,6 @@ namespace Readers {
         cin >> num;
         return num;
     }
-    float CalculateHalfNumber(int Number)
-    {
-        return (float)Number / 2;
-    }
-    unsigned short ReadAge()
-    {
-        unsigned short Age;
-        cout << "\nPlease enter your Age between 18 and 45 ?" << endl;
-        cin >> Age;
-        return Age;
-    }
     string ReadText(string message) 
     {
         string text = " ";
