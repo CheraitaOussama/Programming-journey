@@ -1,10 +1,9 @@
 #pragma once
 #include<iostream>
-using namespace std;
 #include <string>
 #include <cstdlib>
-#include "Generators.h"
-using namespace Generators;
+using namespace std;
+
 namespace Readers {
     int ReadNumber()
     {
@@ -47,23 +46,6 @@ namespace Readers {
         } while (Number<From || Number>To);
         return Number;
     }
-     enWhatToSum ReadWhatToSum()
-     {
-         enWhatToSum WhatToSum;
-         int temp = 0;
-         cout << "Please enter 0 to sum All Numbers or 1 to sum odd numbers or 2 to sum even number?" << endl;
-         cin >> temp;
-         if (temp == enWhatToSum::All) {
-             return enWhatToSum::All;
-         }
-         else if (temp == enWhatToSum::Even) {
-             return enWhatToSum::Even;
-         }
-         else if (temp == enWhatToSum::Odd) {
-             return enWhatToSum::Odd;
-         }
-
-     }
      unsigned int ReadPositiveNumber(string Message)
      {
          int Number;
