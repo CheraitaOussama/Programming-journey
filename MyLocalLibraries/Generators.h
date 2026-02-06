@@ -32,30 +32,4 @@ namespace Generators {
 
         }
     }
-
-   
-
-    float DaystoWeeks(float NumberOfDays)
-    {
-        return (float)NumberOfDays / 7;
-    }
-    float HourstoWeeks(float NumberOfHours)
-    {
-        return (float)NumberOfHours / (24 * 7);
-    }
-    float HourstoDays(float NumberOfHours)
-    {
-        return (float)NumberOfHours / 24;
-    }
-    int SumOfDigits(int Number)
-    {
-        cout << endl;
-        int Reminder = 0, Sum = 0;
-        while (Number > 0) {
-            Reminder = Number % 10;
-            Number = Number / 10;
-            Sum += Reminder;
-        }
-        return Sum;
-    }
 }
