@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+int ReadNumber() {
+	int Number = 0;
+	cout << "\nEnter the number to count in matrix?  ";
+	cin >> Number;
+	return Number;
+}
+int RandomNumber(int From, int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], short Row, short Column) {
+	short Counter = 0;
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			Matrix[i][j] = RandomNumber(1, 10);
+		}
+	}
+
+}
+void PrintMatrix(int Matrix[3][3], short Row, short Column) {
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++) {
+			printf("  %0*d   ", 2, Matrix[i][j]);
+		}
+		cout << "\n";
+	}
+}
+int CountNumberInMatrix(int Matrix[3][3], int Number,short Row, short Column) {
+	int Counter = 0;
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			if (Matrix[i][j] == Number)
+				Counter++;
+		}
+	}
+	return Counter;
+}
+
+int main() {
+	srand((unsigned)time(NULL));
+	int Matrix1[3][3];
+	FillMatrixWithRandomNumbers(Matrix1,3,3);
+	cout << "Matrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	int Number = ReadNumber();
+	cout<<"\nNumber "<< Number <<" count in matrix is " << CountNumberInMatrix(Matrix1, Number, 3, 3)<<endl;
+	return 0;
+}
