@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+
+int ReadNumber() {
+	int Number = 0;
+	cout << "\nEnter the number to count in matrix?  ";
+	cin >> Number;
+	return Number;
+}
+int RandomNumber(int From, int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], short Row, short Column) {
+	short Counter = 0;
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			Matrix[i][j] = RandomNumber(1, 100);
+		}
+	}
+
+}
+void PrintMatrix(int Matrix[3][3], short Row, short Column) {
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++) {
+			printf("  %0*d   ", 2, Matrix[i][j]);
+		}
+		cout << "\n";
+	}
+}
+bool IspalindromeMatrix(int Matrix1[3][3],short Row, short Column) {
+	for (short i = 0; i < Row; i++){
+		for (short j = 0; j < Column/2; j++) {
+			if (Matrix1[i][j] != Matrix1[i][Column - 1 -j]){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+int main() {
+	srand((unsigned)time(NULL));
+	int Matrix1[3][3] = {
+		{1,2,1},
+		{5,5,5},
+		{7,3,7}
+	};
+	cout << "Matrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+
+	if (IspalindromeMatrix(Matrix1, 3, 3))
+		cout << "\nYes: Matrix is Palindrome\n";
+	else
+		cout << "\nNo: Matrix is Palindrome\n";
+	return 0;
+}
