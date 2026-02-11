@@ -1,0 +1,60 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int RandomNumber(int From, int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], short Row, short Column) {
+	short Counter = 0;
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			Matrix[i][j] = RandomNumber(1, 10);
+		}
+	}
+
+}
+void PrintMatrix(int Matrix[3][3], short Row, short Column) {
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++) {
+			printf("  %0*d   ", 2, Matrix[i][j]);
+		}
+		cout << "\n";
+	}
+}
+bool IsIdentityMatrix(int Matrix1[3][3], short Row, short Column) {
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			if (i == j && Matrix1[i][j] != 1) {
+				return false;
+			}
+			else if (i != j && Matrix1[i][j] != 0){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+int main() {
+	srand((unsigned)time(NULL));
+
+	int Matrix1[3][3] = {
+		{1,0,0},
+		{0,1,0},
+		{0,0,1}
+	};
+
+	cout << "Matrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	if (IsIdentityMatrix(Matrix1, 3, 3))
+		cout << "\nYes:	Matrix is identity.\n";
+	else
+		cout << "\nNo: Matrix is Not identity.\n";
+
+	return 0;
+}
