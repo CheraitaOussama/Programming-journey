@@ -1,0 +1,55 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int RandomNumber(int From,int To) {
+	return rand() % (To - From + 1) + From;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], short Row, short Column) {
+	short Counter = 0;
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			Matrix[i][j] = RandomNumber(1,10);
+		}
+	}
+
+}
+void PrintMatrix(int Matrix[3][3],short Row, short Column) {
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++){
+			printf("  %0*d   ", 2, Matrix[i][j]);
+		}
+		cout << "\n";
+	}
+}
+bool AreTypicalMatrices(int Matrix1[3][3], int Matrix2[3][3] , short Row, short Column) {
+	for (short i = 0; i < Row; i++)
+	{
+		for (short j = 0; j < Column; j++)
+		{
+			if (Matrix1[i][j] != Matrix2[i][j])
+				return false;
+		}
+	}
+	return true;
+}
+
+int main() {
+	srand((unsigned)time(NULL));
+
+	int Matrix1[3][3], Matrix2[3][3];
+	FillMatrixWithRandomNumbers(Matrix1, 3, 3);
+	FillMatrixWithRandomNumbers(Matrix2, 3, 3);
+	cout << "Matrix1:\n";
+	PrintMatrix(Matrix1, 3, 3);
+	cout << "\nMatrix2:\n";
+	PrintMatrix(Matrix2, 3, 3);
+	if (AreTypicalMatrices(Matrix1, Matrix2, 3, 3))
+		cout << "\nYes:	both matrices are typical.\n";
+	else
+		cout << "\nNo: matrices are Not typical.\n";
+
+	return 0;
+}
