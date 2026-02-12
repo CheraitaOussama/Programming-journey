@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string>
+using namespace std;
+string ReadString() {
+	string S1;
+	cout << "\nPlease Enter Your String?\n";
+	getline(cin, S1);
+	return S1;
+}
+short CountWords(string S1) {
+	
+	short Counter=0,Position = 0;
+	string Word;
+	string Delim = " ";
+	while ((Position=S1.find(Delim))!=string::npos) {
+		Word = S1.substr(0, Position);
+		if (Word!="")
+		{
+			Counter++;
+		}
+		S1 = S1.erase(0, Delim.length() + Position);
+	}
+	if (S1 != ""){
+		Counter++;
+	}
+	return Counter;
+}
+int main() {
+	string S1=ReadString();
+	cout << "\nThe number of words in your string is: \n" << CountWords(S1) << endl;
+	return 0;
+}
