@@ -1,0 +1,37 @@
+#include<iostream>
+#include<string>
+#include<cctype>
+using namespace std;
+string ReadString() {
+	string S1;
+	cout << "\nPlease Enter Your String?\n";
+	getline(cin,S1);
+	return S1;
+}
+void UpperAllLetter(string &S1) {
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i]!=' '&&islower(S1[i]))
+		{
+			S1[i] = toupper(S1[i]);
+		}
+	}
+}
+void LowerAllLetter(string &S1) {
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i] != ' ' && isupper(S1[i]))
+		{
+			S1[i] = tolower(S1[i]);
+		}
+	}
+}
+
+int main() {
+	string S1=ReadString();
+	UpperAllLetter(S1);
+	cout << "\nString after Upper:\n" << S1 << endl;
+	LowerAllLetter(S1);
+	cout << "\nString after Lower:\n"<<S1<<endl;
+	return 0;
+}
