@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+char ReadCharacter() {
+	char Character;
+	cout << "\nPlease Enter a Character?\n";
+	cin >> Character;
+	return Character;
+}
+bool IsVowel(char Character) {
+	Character = tolower(Character);
+	return (Character == 'a' || Character == 'e' || Character == 'i' || Character == 'o' || Character == 'u');
+}
+int main() {
+	char Letter = ReadCharacter();
+	if(IsVowel(Letter))
+	cout << "\n YES Letter '" << Letter << " ' " <<
+		"is vowel\n";
+	else
+	 cout << "\n No Letter '" << Letter << " ' " <<
+		"is not vowel\n";
+	return 0;
+}
