@@ -1,0 +1,40 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+string ReadString() {
+	string S1;
+	cout << "\nPlease Enter Your String?\n";
+	getline(cin,S1);
+	return S1;
+}
+vector<string>Split(string S1,string Delim) {
+	vector<string>VWords;
+	short Position = 0;
+	string Word;
+	while ((Position= S1.find(Delim))!=string::npos) {
+		Word = S1.substr(0, Position);
+		if (Word!="")
+		{
+			VWords.push_back(Word);
+		}
+		S1 = S1.erase(0, Position+ Delim.length());
+	}
+	if (S1!="")
+	{
+		VWords.push_back(S1);
+	}
+	return VWords;
+}
+int main() {
+
+	string S1 = ReadString();
+	vector<string>Vwords = Split(S1," ");
+	cout << "\nTokens = " << Vwords.size() << endl;
+	for (string& Word : Vwords)
+	{
+		cout << Word<<endl;
+	}
+
+	return 0;
+}
