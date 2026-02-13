@@ -1,1 +1,34 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+string TrimRight(string S1) {
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i]!=' ') {
+			return S1.substr(i, S1.length()-i);
+		}
+	}
+	return "";
+}
+string TrimLeft(string S1) {
+	for (short i = S1.length()-1; i >=0; i--)
+	{
+		if (S1[i] != ' ') {
+			return S1.substr(0, i+1);
+		}
+	}
+	return "";
+}
+string Trim(string S1) {
+	return TrimRight(TrimLeft(S1));
+}
+int main() {
 
+	string S1 = " Oussama     ";
+	cout << S1.length()<<endl;
+	string S2= Trim(S1);
+	cout << S2.length() << endl;
+	cout << S2 << endl;
+	return 0;
+}
