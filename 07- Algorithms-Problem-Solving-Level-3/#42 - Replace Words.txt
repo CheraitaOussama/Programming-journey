@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+string ReplaceString(string S1,string StringToReplace ,string SToReplace) {
+	short Position = 0;
+	while ((Position=S1.find(StringToReplace)) !=string::npos ) {
+		S1=S1.replace(Position, StringToReplace.length(), SToReplace);
+	}
+	return S1;
+}
+int main() {
+	string S1 = "Welcome to Jordan , Jordan is a nice country";
+	cout << "Original String\n";
+	cout << S1 << endl;
+	cout << "String After Replace\n";
+	cout << ReplaceString(S1,"Jordan","USA");
+	return 0;
+}
