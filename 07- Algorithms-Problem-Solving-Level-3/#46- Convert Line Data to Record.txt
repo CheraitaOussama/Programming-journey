@@ -1,0 +1,80 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+struct StClientData
+{
+	string AccountNumber="";
+	string PinCode="";
+	string Name="";
+	string PhoneNumber="";
+	double AccountBalance=0;
+};
+StClientData ReadNewClient() {
+	StClientData Client;
+
+	cout << "Please Enter Client Data:\n\n";
+	cout << "Enter Account Number?  ";
+	getline(cin, Client.AccountNumber);
+	cout << "Enter PinCode?  ";
+	getline(cin, Client.PinCode);
+	cout << "Enter Name?  ";
+	getline(cin, Client.Name);
+	cout << "Enter Phone?  ";
+	getline(cin, Client.PhoneNumber);
+	cout << "Enter AccountBalance?  ";
+	cin >> Client.AccountBalance;
+
+	return Client;
+}
+vector<string> SplitString(string S1, string Seperator) {
+	vector<string> Vwords;
+	short Position = 0;
+	string Word = "";
+	while ((Position=S1.find(Seperator))!=string::npos) {
+		Word = S1.substr(0, Position);
+		if (Word!="")
+		{
+			Vwords.push_back(Word);
+		}
+		S1 = S1.erase(0, Position+ Seperator.length());
+	}
+	if (S1!="")	{
+		Vwords.push_back(S1);
+	}
+	return Vwords;
+}
+string ConvertRecordToLine(StClientData Client,string Seperator="#//#") {
+	string stClientRecord="";
+	stClientRecord+=Client.AccountNumber+ Seperator;
+	stClientRecord+= Client.PinCode+ Seperator;
+	stClientRecord+=Client.Name + Seperator;
+	stClientRecord+=Client.PhoneNumber+ Seperator;
+	stClientRecord+=to_string(Client.AccountBalance);
+	return stClientRecord;
+}
+StClientData ConvertLineToRecord(string Line, string Seperator = "#//#") {
+	StClientData Client;
+	vector<string> Vwords = SplitString(Line, Seperator);
+	Client.AccountNumber=Vwords[0] ;
+	Client.PinCode = Vwords[1];
+	Client.Name = Vwords[2];
+	Client.PhoneNumber = Vwords[3];
+	Client.AccountBalance =stod(Vwords[4]);
+	return Client;
+}
+void PrintClient(StClientData Client) {
+	cout <<"Account Number : "<< Client.AccountNumber<<endl;
+	cout <<"Pin Code       : "<< Client.PinCode << endl;
+	cout <<"Name           : "<< Client.Name << endl;
+	cout <<"Phone          : "<< Client.PhoneNumber << endl;
+	cout <<"AccountBalance : "<< Client.AccountBalance << endl;
+}
+int main() {
+	string Line = "A150#//#1234#//#Oussama Cheraita#//#07756399#//#52700";
+	cout << "\nLine Record is:\n" << Line<<endl;
+	StClientData Client=ConvertLineToRecord(Line);
+	cout << "\nThe following is the extracted client record\n\n";
+	PrintClient(Client);
+	return 0;
+}
