@@ -1,0 +1,147 @@
+#include<iostream>
+#include<vector>
+#include<string>
+#include<iomanip>
+#include<fstream>
+using namespace std;
+const string ClientsFileName = "Clients.txt";
+
+struct stClient{
+	string AccountNumber;
+	string PinCode;
+	string Name;
+	string Phone;
+	double AccountBalance;
+	bool MarkForDelete = false;
+};
+vector<string>SplitString(string S1,string Delim) {
+	vector<string> Vwords;
+	short Position = 0;
+	string Sword;
+	while ((Position= S1.find(Delim))!=string::npos) {
+		Sword = S1.substr(0, Position);
+		if (Sword!=""){
+			Vwords.push_back(Sword);
+		}
+		 S1.erase(0, Position+ Delim.length());
+	}
+	if (S1!=""){
+		Vwords.push_back(S1);
+	}
+	return Vwords;
+}
+stClient ConvertLineToRecord(string Line,string Separator="#//#") {
+	stClient Client;
+	vector<string>VclientData = SplitString(Line, Separator);
+	Client.AccountNumber = VclientData[0];
+	Client.PinCode = VclientData[1];
+	Client.Name = VclientData[2];
+	Client.Phone = VclientData[3];
+	Client.AccountBalance = stod( VclientData[4]);
+	return Client;
+}
+string ConvertRecordToline(stClient CLient, string Separator = "#//#") {
+	string stCLientRecord = "";
+	stCLientRecord += CLient.AccountNumber + Separator;
+	stCLientRecord += CLient.PinCode + Separator;
+	stCLientRecord += CLient.Name + Separator;
+	stCLientRecord += CLient.Phone + Separator;
+	stCLientRecord +=to_string(CLient.AccountBalance);
+	return stCLientRecord;
+}
+vector<stClient>LoadClientDataFromFile(string FileName) {
+	vector<stClient>Vclients;
+	fstream Myfile;
+	string Line;
+	Myfile.open(FileName,ios::in);
+	if (Myfile.is_open()){
+		while (getline(Myfile, Line)) {
+			Vclients.push_back(ConvertLineToRecord(Line));
+		}
+		Myfile.close();
+	}
+	return Vclients;
+}
+void PrintClientCard(stClient Client) {
+	cout << "\nThe following are the client details:\n";
+	cout << "\nAccount Number  : "<< Client.AccountNumber;
+	cout << "\nPin Code        : "<< Client.PinCode;
+	cout << "\nName            : "<< Client.Name;
+	cout << "\nPhone           : "<< Client.Phone;
+	cout << "\nAccount Balance : "<< Client.AccountBalance;
+}
+bool FindClientByAccountNumber(string AccountNumber, vector<stClient>Vclients, stClient&Client) {
+	for (stClient& C : Vclients){
+		if (C.AccountNumber== AccountNumber){
+		  Client = C;
+		  return true;
+		}
+	}
+	return false;
+}
+vector<stClient>SaveClientDataToFile(string FileName,vector<stClient>Vclients) {
+	fstream Myfile;
+	string Line;
+	Myfile.open(FileName,ios::out);
+	if (Myfile.is_open()) {
+		for (stClient& C : Vclients){
+			if (C.MarkForDelete==false){
+				Myfile << ConvertRecordToline(C) << endl;
+			}
+		}
+		Myfile.close();
+	}
+	return Vclients;
+}
+string ReadClientAccountNumber() {
+	string AccountNumber = "";
+	cout << "\nPlease enter Account Number? ";
+	getline(cin, AccountNumber);
+	return AccountNumber;
+}
+stClient UpdateDataClient(string AccountNumber) {
+	stClient Client;
+	Client.AccountNumber = AccountNumber;
+	cout << "Enter PinCode? ";
+	getline(cin>>ws, Client.PinCode);
+	cout << "Enter Name? ";
+	getline(cin, Client.Name);
+	cout << "Enter phone? ";
+	getline(cin, Client.Phone);
+	cout << "Enter AccountBalance? ";
+    cin >>Client.AccountBalance;
+	return Client;
+}
+bool UpdateClientByAccountNumber(string AccountNumber,vector<stClient>&Vclients) {
+	stClient Client;
+	char Answer = 'y';
+	if (FindClientByAccountNumber(AccountNumber, Vclients,Client)){
+		PrintClientCard(Client);
+		cout << "\nAre you sure you want update this client? y/n ? \n";
+		cin >> Answer;
+		if (tolower(Answer)== Answer){
+			for (stClient& C : Vclients){
+				if (C.AccountNumber== AccountNumber){
+					C = UpdateDataClient(AccountNumber);
+					break;
+					
+				}
+			}
+			SaveClientDataToFile(ClientsFileName, Vclients);
+			Vclients = LoadClientDataFromFile(ClientsFileName);
+			cout << "\nClient Update Successfully.\n";
+			return true;
+		}
+	}
+	else
+	{
+		cout << "\nClient with Account Number ("<< AccountNumber<<") Not Found!\n";
+		return false;
+	}
+}
+int main() {
+	string AccountNumber=ReadClientAccountNumber();
+	vector<stClient> Vclients = LoadClientDataFromFile(ClientsFileName);
+	UpdateClientByAccountNumber(AccountNumber, Vclients);
+	return 0;
+}
