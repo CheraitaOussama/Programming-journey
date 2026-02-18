@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+struct stDate
+{
+	short Year = 0;
+	short Month = 0;
+	short Day = 0;
+};
+short ReadYear() {
+	short Year = 0;
+	cout << "Please enter a year?  ";
+	cin >> Year;
+	return Year;
+}
+short ReadMonth() {
+	short Month = 0;
+	cout << "Please enter a Month?  ";
+	cin >> Month;
+	return Month;
+}
+short ReadDay() {
+	short Day = 0;
+	cout << "Please enter a Day?  ";
+	cin >> Day;
+	return Day;
+}
+stDate ReadDate() {
+	stDate Date;
+	Date.Year = ReadYear();
+	Date.Month = ReadMonth();
+	Date.Day = ReadDay();
+	return Date;
+}
+int DayOrder(stDate Date) {
+	int a = (14 - Date.Month) / 12;
+	int y = Date.Year - a;
+	int m = Date.Month + (12 * a) - 2;
+	return (Date.Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
+}
+string DayName(int DayOrder) {
+	string NameDayWeek[] = {"Sun","Mon","Tue","Wed","Thur","Fri","Sat"};
+	return NameDayWeek[DayOrder];
+}
+int main() {
+	stDate Date= ReadDate();
+	int Dayorder =DayOrder(Date);
+	cout << "\nDate      :" << Date.Day << "/" << Date.Month << "/" << Date.Year << endl;
+	cout << "Day Order :" << Dayorder <<endl;
+	cout << "Day Name  :" << DayName(Dayorder) <<endl;
+	return 0;
+}
