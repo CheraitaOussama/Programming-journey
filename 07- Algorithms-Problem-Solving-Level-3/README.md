@@ -39,8 +39,7 @@ algorithmic problems**, each designed to improve:
 - Language: C++
 - Programming Paradigm: Structured Programming
 - Tools:
-  - VS Code / Dev-C++
-  - Git
+  - VS Code 
   - GitHub
 
 ---
