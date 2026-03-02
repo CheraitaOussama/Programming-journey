@@ -23,7 +23,7 @@ real-world banking transactions while strengthening core C++ skills such as:
 ---
 
 ## Key Features
-### Project 4 – ATM System
+### Project ATM System
 
 - **Secure Login**  
   Authenticate users using account number and PIN.
